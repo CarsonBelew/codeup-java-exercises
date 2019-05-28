@@ -10,6 +10,7 @@ public class Input {
     }
 
     public String getString(){
+
         return getString("Write something: ");
     }
 
@@ -28,11 +29,21 @@ public class Input {
     }
 
     public  int getInt(){
-        return Integer.parseInt(getString("Give me a number: "));
+        int number;
+
+        try {
+            number = Integer.valueOf(getString("Give me a number: "));
+        } catch (NumberFormatException nfe){
+            System.out.println("Input is not a number, please put in a number");
+            return getInt();
+        }
+
+        return number;
     }
 
     public double getDouble(){
-        return Double.parseDouble(getString("Give me a decimal"));
+
+        return Double.valueOf(getString("Give me a decimal"));
     }
 
     public double getDouble(double min, double max){
